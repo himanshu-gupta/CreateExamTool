@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+<div id="agenda_title">
+	<h1><i><center><%= @exam.name %></center></i></h1>
+</div>
+
+<p>
+  <b>Questions so far : </b>
+  <b><%= @exam.questions.count %></b>
+</p>
+
+<%= render @exam.questions %>
+
+<br><br>
+<b>Add Question</b>
+<%= render "questions/form" %>
+
+<%= link_to 'Back', exams_path %>
