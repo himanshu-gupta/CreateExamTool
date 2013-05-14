@@ -7,15 +7,16 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
   </tr>
 
 <% @exams.each do |exam| %>
-  <tr>
+  <tr id="<%= exam.id%>">
     <td><%= exam.name %></td>
     <td><%= exam.owner %></td>
-    <td><%= link_to 'Show', exam %></td>
+    <td><%= link_to 'Questions', exam_questions_path(exam) %></td>    
     <td><%= link_to 'Edit', edit_exam_path(exam) %></td>
-    <td><%= link_to 'Destroy', exam, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Destroy', exam, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
   </tr>
 <% end %>
 </table>

@@ -1,0 +1,17 @@
+<table>
+  <% if answer.id.present? %>
+    <tr id="<%= answer.id%>" bgcolor='#eee'>
+      <% ques_type = answer.question.ques_type %>
+      <% if ques_type == "Radio Button" %>
+      	<td width='50'>0</td>
+      <% elsif ques_type == "CheckBox" %>
+      	<td width='50'>[]</td>
+      <% else %>
+      	<td width='50'>None</td>
+      <% end %>
+      <td width='550'><%= answer.desc %></td>
+      <td> | <%= link_to 'Edit', edit_exam_question_answer_path(answer.question.exam, answer.question, answer) %></td>
+      <td> | <%= link_to 'Delete', [answer.question.exam, answer.question, answer], :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+    </tr>
+  <% end %>
+</table>

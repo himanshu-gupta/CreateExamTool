@@ -1,9 +1,13 @@
 <%= form_for([@exam, @question]) do |f| %>
   <div class="field">
     <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.text_area :description, :rows => 5 %>
+  </div>
+  <div class="field">
+    <%= f.label :ques_type %><br />
+    <%= f.select :ques_type, options_for_select([["Radio Button", "Radio Button"], ["CheckBox","CheckBox"]]) %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Submit" %>
   </div>
 <% end %>

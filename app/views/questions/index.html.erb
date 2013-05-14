@@ -1,25 +1,19 @@
 <h1>Listing questions</h1>
 
-<table>
-  <tr>
-    <th>Description</th>
-    <th>Exam</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
 <% @questions.each do |question| %>
-  <tr>
-    <td><%= question.description %></td>
-    <td><%= question.exam %></td>
-    <td><%= link_to 'Show', question %></td>
-    <td><%= link_to 'Edit', edit_question_path(question) %></td>
-    <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <% if question.id.present? %>
+    <div id="<%= question.id%>">
+      <%= question.description %>
+      | <%= link_to 'Edit', edit_exam_question_path(question.exam, question) %>
+      | <%= link_to 'Delete', [question.exam, question], :confirm => 'Are you sure?', :method => :delete, :remote => true %>
+
+      <%= render question.answers %>
+      <%= link_to 'Add Answer', new_exam_question_answer_path(question.exam, question) %>
+    </div>
+  <% end %>
+<br><br>
 <% end %>
-</table>
 
-<br />
-
-<%= link_to 'New Question', new_question_path %>
+<br><br>
+<b>Add Question</b>
+<%= render "questions/form" %>

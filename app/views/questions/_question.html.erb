@@ -1,9 +1,0 @@
-<table>
-  <% if question.id.present? %>
-    <tr id="<%= question.id%>">
-      <td width='550' bgcolor='#eee'><%= question.description %></td>
-      <td> | <%= link_to 'Edit', edit_exam_question_path(question.exam, question) %></td>
-      <td> | <%= link_to 'Delete', [question.exam, question], :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
-    </tr>
-  <% end %>
-</table>

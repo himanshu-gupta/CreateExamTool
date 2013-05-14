@@ -1,8 +1,11 @@
 CreateExam::Application.routes.draw do
+
   root :to => 'exams#index'
 
   resources :exams do
-    resources :questions
+    resources :questions do
+      resources :answers
+    end
   end
 
 

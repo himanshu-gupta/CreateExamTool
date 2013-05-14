@@ -10,6 +10,7 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   def index
     @questions = @exam.questions.all
+    @question = @exam.questions.build
 
     respond_to do |format|
       format.html # index.html.erb
@@ -51,14 +52,14 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to exam_path(@exam), notice: 'Question was successfully created.' }
-        format.json { render json: exam_path(@exam), status: :created, location: @question }
+        format.html { redirect_to exam_questions_path(@exam), notice: 'Question was successfully created.' }
+        format.json { render json: exam_questions_path(@exam), status: :created, location: @question }
       else
         format.html {  
           flash[:error] = 'Question description can not be left blank.'
-          redirect_to exam_path(@exam)
+          redirect_to exam_questions_path(@exam)
         }
-        format.json { render json: exam_path(@exam).errors, status: :unprocessable_entity }
+        format.json { render json: exam_questions_path(@exam).errors, status: :unprocessable_entity }
       end
     end
   end
@@ -70,7 +71,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.update_attributes(params[:question])
-        format.html { redirect_to exam_path(@exam), notice: 'Question was successfully updated.' }
+        format.html { redirect_to exam_questions_path(@exam), notice: 'Question was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
