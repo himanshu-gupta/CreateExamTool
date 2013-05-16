@@ -13,5 +13,8 @@
       <% end %>
       <td width='950'><%= answer.desc %></td>
     </tr>
+    <% if answer.image_url.present? %>
+      <tr><td colspan='3' align='center'><%= image_tag answer.image_url(:thumb).to_s %></td></tr>
+    <% end %>
   <% end %>
 </table>

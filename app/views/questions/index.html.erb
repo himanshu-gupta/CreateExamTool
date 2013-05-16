@@ -27,7 +27,8 @@
         <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete', :size => "16x16"), [question.exam, question], :confirm => 'Are you sure?', :method => :delete, :remote => true %>
         <b>Full Ques : </b>
         <div id="question">
-          <%= question.description %>
+          <%= question.description %><br/>
+          <center><%= image_tag question.image_url(:thumb).to_s if question.image_url.present? %></center>
         </div>
         <div id="ques_answers">
           <%= render question.answers %>
