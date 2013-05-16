@@ -1,0 +1,3 @@
+$("#dialog-form").html("")
+$("#dialog-form").modal();
+$("#dialog-form").append("<%= escape_javascript(render :partial => 'form')-%>")
