@@ -1,17 +1,17 @@
 <table>
   <% if answer.id.present? %>
-    <tr id="<%= answer.id%>" bgcolor='#eee'>
+    <tr id="<%= answer.id%>">
+      <td><%= link_to image_tag( 'edit.png', :border=>0, :title=>'Edit', :size => "16x16"), edit_exam_question_answer_path(answer.question.exam, answer.question, answer) %></td>
+      <td><%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete', :size => "16x16"), [answer.question.exam, answer.question, answer], :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
       <% ques_type = answer.question.ques_type %>
       <% if ques_type == "Radio Button" %>
-      	<td width='50'>0</td>
+      	<td width='20'><%= image_tag( 'radio_button.png', :border=>0, :size => "16x16") %></td>
       <% elsif ques_type == "CheckBox" %>
-      	<td width='50'>[]</td>
+      	<td width='20'><%= image_tag( 'checkbox.gif', :border=>0, :size => "16x16") %></td>
       <% else %>
-      	<td width='50'>None</td>
+      	<td width='20'>None</td>
       <% end %>
-      <td width='550'><%= answer.desc %></td>
-      <td> | <%= link_to 'Edit', edit_exam_question_answer_path(answer.question.exam, answer.question, answer) %></td>
-      <td> | <%= link_to 'Delete', [answer.question.exam, answer.question, answer], :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+      <td width='950'><%= answer.desc %></td>
     </tr>
   <% end %>
 </table>

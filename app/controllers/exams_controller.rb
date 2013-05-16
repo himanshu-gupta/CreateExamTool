@@ -5,7 +5,14 @@ class ExamsController < ApplicationController
     @exams = Exam.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      if params[:create_exam].present? 
+        format.html { 
+          flash[:notice] = 'Exam created successfully.'
+          render :template => "exams/index"
+        }
+      else
+        format.html # index.html.erb
+      end
       format.json { render json: @exams }
     end
   end

@@ -1,69 +1,220 @@
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+html,
 body {
-  background-color: #fff;
-  color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+   margin:0;
+   padding:0;
+   height:100%;
 }
 
-p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+#container {
+   min-height:            100%;
+   position:              relative;
 }
 
-pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+#header {
+  width:                  100%;
+  background:             #0099CC;
+  height:                 60px;
+}
+
+#home_icon {
+  width:                  10%;
+}
+
+#home_title {
+  font-family:            Verdana, sans-serif;
+  width:                  90%;
+  margin-left:            10%;
+  text-align:             center;
+  font-size:              20pt;
+}
+
+#login_user {
+  font-family:            Verdana, sans-serif;
+  text-align:             left;
+  width:                  100%;
+  background:             #0099CC;
+  font-size:              10pt;
+  height:                 15px;
+  color:                  white;
+}
+
+#footer {
+  position:               absolute;
+  bottom:                 0;
+  text-align:             center;
+  display:                block;
+  width:                  100%;
+  background:             #0099CC;
+  font-size:              10pt;
+  height:                 60px;
+  padding:                0.3em;
+}
+
+#body {
+  margin-left:            3%;
+  margin-top:             1%;
+  margin-right:           3%;
+  padding:10px;
+  padding-bottom:60px;   /* Height of the footer */
+  width:                  94%;
+  font-family:            Verdana, sans-serif;
+  font-size:              11pt;
+}
+
+.round.create-button {
+  display:                block;
+  text-align:             center;
+  width:                  140px;
+  background:             #0099CC;
+  border-width:           3px;
+  font-size:              10pt;
+  height:                 35px;
+}
+  
+.round.create-button a {
+   color:                white;
+}
+
+#idea-description-old {
+  margin-top:           0.5em;
+  display:                block;
+  width:                  150px;
+  background:             #0099CC;
+  border-width:           3px;
+  font-size:              10pt;
+  height:                 150px;
+  padding:                0.3em;
+  margin-bottom:          1em;
+}
+
+#idea-description {
+  margin-top:           0.5em;
+  display:                block;
+  width:                  150px;
+  background:             #0099CC;
+  border-width:           3px;
+  font-size:              10pt;
+  height:                 150px;
+  padding:                0.3em;
+  margin-bottom:          1em;
+}
+
+.round.idea-separator {
+  display:                block;
+  background:             #0099CC;
+  height:                 2px;
+}
+
+#add-idea { 
+  border-width:           3px;
 }
 
 a {
-  color: #000;
+  color:                  #000;
   &:visited {
-    color: #666;
+    color:                #000;
   }
   &:hover {
-    color: #fff;
-    background-color: #000;
+    color:                #fff;
+    background-color:     #0099CC;
   }
 }
 
-div {
-  &.field, &.actions {
-    margin-bottom: 10px;
-  }
+td {
+  vertical-align:top;
 }
 
 #notice {
-  color: green;
+  padding:                2px;
+  background-color:       #EEEEEE;
+  display:                table;
+  color:                  green;
+  font-size:              12px;
+  list-style:             square;
 }
 
-.field_with_errors {
-  padding: 2px;
-  background-color: red;
-  display: table;
+#error {
+  padding:                2px;
+  background-color:       #EEEEEE;
+  display:                table;
+  color:                  red;
+  font-size:              12px;
+  list-style:             square;
 }
 
 #error_explanation {
-  width: 450px;
-  border: 2px solid red;
-  padding: 7px;
-  padding-bottom: 0;
-  margin-bottom: 20px;
-  background-color: #f0f0f0;
-  h2 {
-    text-align: left;
-    font-weight: bold;
-    padding: 5px 5px 5px 15px;
-    font-size: 12px;
-    margin: -7px;
-    margin-bottom: 0px;
-    background-color: #c00;
-    color: #fff;
-  }
+  padding:                2px;
+  background-color:       #EEEEEE;
+  display:                table;
+  color:                  black;
   ul li {
-    font-size: 12px;
-    list-style: square;
+    font-size:            12px;
+    list-style:           square;
   }
+}
+
+.exam_list {
+  border:                 2px solid;
+  margin-left:            3%;
+  margin-top:             3%;
+  margin-right:           3%;
+  width:                  94%;
+  cell-spacing:           0;
+  cell-padding:           0;
+}
+
+#ques_answers {  
+  margin-left:            12%;
+  margin-top:             1%;
+  font-size:              14px;
+}
+
+#question {  
+  margin-left:            6%;
+  font-size:              14px;
+}
+
+#modal_question_form {
+  margin-left:            10%;
+  margin-right:           10%;
+  margin-top:             10%;
+  width:                  80%;
+}
+
+#align_center {
+  margin-left:            10%;
+  margin-right:           10%;
+  width:                  80%;  
+}
+
+#question_count {
+  border:                 2px solid;
+  height:                 auto;
+  padding:                10px;
+  border-radius:          7px;
+}
+
+#each_number {
+  border:                 1px solid;
+  height:                 20px;
+  padding:                6px;
+  text-decoration:        none;
+  background-color:       #EEEEEE;
+}
+
+#add_question, #submit_exam {
+  border:                 2px solid;
+  height:                 6px;
+  padding:                10px;
+  border-radius:          7px;
+  text-decoration:        none;
+  background-color:       #EEEEEE;
+  cursor:                 pointer;
+}
+
+.ui-accordion .ui-accordion-header {
+  margin-top: -17px !important;
 }

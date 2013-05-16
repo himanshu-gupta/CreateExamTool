@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CreateExam</title>
+  <title>Exam Creation Tool</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div id="container">
 
+  <div id="header">
+    <div id="home_icon">
+      <%= link_to image_tag( 'home.png', :border=>0, :title=>'Home', :size=>'60x60', :align=>'left'), exams_path %>
+    </div>
+    <div id="home_title">
+      <b>Create Exam</b>
+    </div>
+  </div>
+
+  <div id="login_user">
+    <%= link_to 'Sample Exams', exams_path %>
+    || <%= link_to "Create Exam", new_exam_path %>
+    || <%#= link_to 'Take Exam', new_agenda_path %>
+  </div> 
+
+  <div id="body">
     <% if flash[:error] %>
       <p id='error'><%=h flash[:error] %></p>
     <% end -%>
     <% if flash[:notice] -%>
       <p id='notice'><%=h flash[:notice] %></p>
     <% end %>
-<%= yield %>
+    <%= yield %></br></br>
+  </div>
 
+  <div id="footer">
+    <h5>Developed by Himanshu Gupta</h5>  
+  </div>
+</div>
 </body>
 </html>

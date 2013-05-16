@@ -1,26 +1,21 @@
 <h1>Listing exams</h1>
 
-<table>
-  <tr>
+<table class="exam_list">
+  <tr style="background:#71ACDD;">
     <th>Name</th>
     <th>Owner</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Add/View Questions</th>
+    <th>Edit Exam</th>
+    <th>Delete Exam</th>
   </tr>
 
 <% @exams.each do |exam| %>
   <tr id="<%= exam.id%>">
-    <td><%= exam.name %></td>
-    <td><%= exam.owner %></td>
+    <td width='350'><%= exam.name %></td>
+    <td width='150'><%= exam.owner %></td>
     <td><%= link_to 'Questions', exam_questions_path(exam) %></td>    
-    <td><%= link_to 'Edit', edit_exam_path(exam) %></td>
-    <td><%= link_to 'Destroy', exam, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+    <td><%= link_to image_tag( 'edit.png', :border=>0, :title=>'Edit', :size => "16x16"), edit_exam_path(exam) %></td>
+    <td><%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete', :size => "16x16"), exam, :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to 'New Exam', new_exam_path %>

@@ -1,19 +1,67 @@
-<h1>Listing questions</h1>
+<table width="100%">
+  <tr>
+    <td width="60%" id="question_count">
+      <% i = 1 %>
+      <% @questions.each do |question| %>
+        <a href="#<%= question.id %>" id="each_number"><%= i %></a>
+        <% i += 1 %>
+      <% end %>
+    </td>
+    <td width="15%">
+      <b id="add_question">Add Question</b>
+    </td>
+    <td width="25%">
+      <%= link_to 'Submit Exam with Questions', exams_path(:create_exam => true), :id => "submit_exam" %>
+  </td>
+  </tr>
+</table>
+<br/><br/>
 
-<% @questions.each do |question| %>
-  <% if question.id.present? %>
-    <div id="<%= question.id%>">
-      <%= question.description %>
-      | <%= link_to 'Edit', edit_exam_question_path(question.exam, question) %>
-      | <%= link_to 'Delete', [question.exam, question], :confirm => 'Are you sure?', :method => :delete, :remote => true %>
-
-      <%= render question.answers %>
-      <%= link_to 'Add Answer', new_exam_question_answer_path(question.exam, question) %>
-    </div>
+<div id="accordion">
+  <% ques_num = 0 %>
+  <% @questions.each do |question| %>
+    <% if question.id.present? %>
+      <h3 class="<%= question.id%>"><b>Ques <%= ques_num += 1 %> : </b><%= question.description.first(100) %>...</h3>
+      <div class="<%= question.id%>">
+        <%= link_to image_tag( 'edit.png', :border=>0, :title=>'Edit', :size => "16x16"), edit_exam_question_path(question.exam, question) %>
+        <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete', :size => "16x16"), [question.exam, question], :confirm => 'Are you sure?', :method => :delete, :remote => true %>
+        <b>Full Ques : </b>
+        <div id="question">
+          <%= question.description %>
+        </div>
+        <div id="ques_answers">
+          <%= render question.answers %>
+          <%= link_to 'Add Answer', new_exam_question_answer_path(question.exam, question) %>
+        </div>
+      </div>
+    <% end %>
+    <br><br>
   <% end %>
-<br><br>
-<% end %>
+</div>
+<!-- modal window to add new question -->
+<%= render 'dialog' %>
 
-<br><br>
-<b>Add Question</b>
-<%= render "questions/form" %>
+<style>
+body { font-size: 62.5%; }
+.ui-dialog .ui-state-error { padding: .3em; }
+.validateQuestion { border: 1px solid transparent; padding: 0.3em; color: red; }
+</style>
+<script> 
+$("#add_question").click(function() {
+  $( "#dialog-form" ).dialog("open");
+});
+
+$( "#dialog-form" ).dialog({
+  autoOpen: false,
+  height: 300,
+  width: 350,
+  modal: true,
+  close: function() {
+    $( this ).dialog( "close" );
+  }
+});
+
+$(function() {
+  $( "#accordion" ).accordion();
+});
+</script>
