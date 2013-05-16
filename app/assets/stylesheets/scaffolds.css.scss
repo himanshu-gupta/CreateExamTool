@@ -203,6 +203,10 @@ td {
   padding:                6px;
   text-decoration:        none;
   background-color:       #EEEEEE;
+  &:hover {
+    color:                #fff;
+    background-color:     #0099CC;
+  }
 }
 
 #add_question, #submit_exam {
@@ -213,6 +217,10 @@ td {
   text-decoration:        none;
   background-color:       #EEEEEE;
   cursor:                 pointer;
+  &:hover {
+    color:                #fff;
+    background-color:     #0099CC;
+  }
 }
 
 .ui-accordion .ui-accordion-header {
