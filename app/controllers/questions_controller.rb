@@ -20,14 +20,18 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   # GET /questions/1.json
-  # def show
-  #   @question = Question.find(params[:id])
+  def show
+    @question = @exam.questions.find(params[:id])
+    ques_ids = @exam.questions.map(&:id)
+    @current_ques_index = ques_ids.index(@question.id.to_i)
+    @prev_ques_id = ques_ids[@current_ques_index - 1] if @question.id!=ques_ids.first
+    @next_ques_id = ques_ids[@current_ques_index + 1] if @question.id!=ques_ids.last
 
-  #   respond_to do |format|
-  #     format.html # show.html.erb
-  #     format.json { render json: @question }
-  #   end
-  # end
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @question }
+    end
+  end
 
   # GET /questions/new
   # GET /questions/new.json

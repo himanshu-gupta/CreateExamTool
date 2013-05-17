@@ -1,18 +1,14 @@
-<table width="100%">
+<table width="100%" id="questions_page_top">
   <tr>
-    <td width="60%" id="question_count">
+    <td width="100%" id="question_count">
       <% i = 1 %>
       <% @questions.each do |question| %>
-        <a href="#<%= question.id %>" id="each_number"><%= i %></a>
+        <a href="#<%= question.id %>" id="each_number" title="<%= question.description%>"><%= i %></a>
         <% i += 1 %>
-      <% end %>
-    </td>
-    <td width="20%">
+      <% end %>.......
       <b id="add_question">Add Question</b>
-    </td>
-    <td width="20%">
       <b><%= link_to 'Save Exam', exams_path(:create_exam => true), :id => "submit_exam" %></b>
-  </td>
+    </td>
   </tr>
 </table>
 <br/><br/>
@@ -23,6 +19,7 @@
     <% if question.id.present? %>
       <h3 class="<%= question.id%>"><b>Ques <%= ques_num += 1 %> : </b><%= question.description.first(100) %>...</h3>
       <div class="<%= question.id%>">
+        <a href="#questions_page_top">Top</a>
         <%= link_to image_tag( 'edit.png', :border=>0, :title=>'Edit', :size => "16x16"), edit_exam_question_path(question.exam, question) %>
         <%= link_to image_tag( 'iconDelete.gif', :border=>0, :title=>'Delete', :size => "16x16"), [question.exam, question], :confirm => 'Are you sure?', :method => :delete, :remote => true %>
         <b>Full Ques : </b>

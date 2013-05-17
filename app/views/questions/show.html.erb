@@ -1,0 +1,21 @@
+<table width="100%">
+  <tr>
+    <td width="100%" id="question_count">
+      <% i = 1 %><b>Go to Question : </b>
+      <% @exam.questions.each do |question| %>
+        <%= link_to "#{i}", exam_question_path(@exam, question), :id => "each_number" %>
+        <% i += 1 %>
+      <% end %>
+    </td>
+  </tr>
+</table>
+<br/>
+
+<table width="100%">
+  <tr>
+  	<td id='ques_button'><b>Ques <%= @current_ques_index + 1 %> : </b></br><%= @question.description %></td>
+  </tr> 
+  <tr>
+  	<td><%= render "answers/answer_form" %></td>
+  </tr> 
+</table>
